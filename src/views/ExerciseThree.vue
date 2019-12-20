@@ -20,7 +20,7 @@
         <b>List of students:</b>
         <v-list>
           <v-list-item v-for="student in students" :key="student">
-            {{ student }}
+            {{ student.name}}--{{student.surname}}
           </v-list-item>
         </v-list>
       </v-col>
@@ -35,7 +35,15 @@
         <a href="https://vuetifyjs.com/en/components/text-fields#icons" target="_blank">For reference</a>
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+        <v-text-field 
+        outlined
+        shaped
+        v-model="student"
+        append-outer-icon="add"
+        label="Add students to the list" 
+        @click:append-outer="push"
+        >
+        </v-text-field>
       </v-col>
     </v-row>
 
@@ -57,6 +65,10 @@
         Make the students a list of objects instead of a list of strings. Each student
         object should have first and last fields for their <b>անուն</b> and <b>ազգանուն</b>.
         Does our v-text-field still update the students correctly?
+        <v-form>
+          
+        </v-form>
+        
       </v-col>
     </v-row>
 
@@ -67,6 +79,12 @@
         <h2>Part 6</h2>
         Create a v-form and incorporate the v-text-field we made, as well as another one for last name,
         so that on submit, it will work properly with student objects. No model validation needed yet.
+        <v-form v-model="valid">
+          <v-text-field  v-model="name" label="Name"></v-text-field>
+          <v-text-field v-model="surname" label="Surname"></v-text-field>
+          <v-btn @click="push">Submmit</v-btn>
+          
+        </v-form>
       </v-col>
     </v-row>
 
@@ -83,11 +101,24 @@
 </template>
 
 <script>
+import { METHODS } from 'http';
 export default {
   name: 'ExerciseThree',
 
   data: () => ({
-    students: []
-  })
-}
+   
+   students:[
+    { name:'Harutyun' , surname:'Terteryan'},
+     {name:'Harutyun' , surname:'Terteryan'},
+     {name:'Harutyun' , surname:'Terteryan'},
+   ],
+   student:null
+  }),
+  methods:{
+    push(){
+      this.students.push({name:this.name,surname:this.surname})
+    }
+  }
+  }
+  
 </script>

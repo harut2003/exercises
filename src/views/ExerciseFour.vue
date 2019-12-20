@@ -20,7 +20,7 @@
         column below so we can see what it looks like.
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+        <login></login>
       </v-col>
     </v-row>
 
@@ -110,9 +110,12 @@
 </template>
 
 <script>
+import Login from '../components/Login'
 export default {
   name: 'ExerciseFour',
-
+  components: {
+    Login
+  },
   data: () => ({
   })
 }

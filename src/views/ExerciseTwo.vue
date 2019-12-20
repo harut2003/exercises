@@ -15,6 +15,7 @@
         <h2>Part 1</h2>
         Create a component called Counter.vue which is simply a v-btn. Import it
         to the column below.
+        <counter color="blue"/>
       </v-col>
       <v-col cols="12">
         <!-- Your code here -->
@@ -69,7 +70,8 @@
         <a href="https://vuetifyjs.com/en/components/selects" target="_blank">For reference</a>
       </v-col>
       <v-col cols="12">
-        <!-- Your code here -->
+        <v-select v-model="color" :items="colors"></v-select>
+        {{color}}
       </v-col>
     </v-row>
 
@@ -111,10 +113,21 @@
 </template>
 
 <script>
+import counter from '../components/counter.vue'
 export default {
-  name: 'ExerciseTwo',
+ 
+    name: 'ExerciseTwo',
+    components:{
+      counter
+    },
+  
+  
 
   data: () => ({
+    color: null,
+    colors: [{text: 'Karmir', value: 'red'},
+             { text:'kapuyt', value:'blue',},
+             {text: 'dexin', value:'yellow'}]
   })
 }
 </script>
